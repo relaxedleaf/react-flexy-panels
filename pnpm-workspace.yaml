@@ -3,4 +3,6 @@ packages:
   - apps/*
 
 onlyBuiltDependencies:
+  - '@swc/core'
   - nx
+  - unrs-resolver
