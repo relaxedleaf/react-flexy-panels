@@ -1,4 +1,7 @@
-import { ComponentProps, CSSProperties } from "react";
+"use client";
+
+import { CSSProperties } from "react";
+import { FlexyPanelProps } from "./types";
 import { useFlexyPanelsContext } from "../../hooks";
 
 export const FlexyPanel = ({
@@ -7,17 +10,7 @@ export const FlexyPanel = ({
   defaultSizeUnit = "%",
   style,
   ...props
-}: ComponentProps<"div"> & {
-  /**
-   * The default size of the panel in pixel
-   * "auto" means the panel will take up the remaining space
-   */
-  defaultSize: number | "auto";
-  /**
-   * @default "%"
-   */
-  defaultSizeUnit?: "px" | "%";
-}) => {
+}: FlexyPanelProps) => {
   const { addPanelRef } = useFlexyPanelsContext();
   const size: CSSProperties =
     defaultSize === "auto"

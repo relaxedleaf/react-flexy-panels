@@ -1,16 +1,15 @@
 "use client";
 
-import { Direction } from "../../types";
+import { useCallback, useMemo, useState } from "react";
 import { FlexyPanelsContext } from "../../contexts";
-import { ComponentProps, useCallback, useMemo, useState } from "react";
+import { FlexyPanelGroupProps } from "./types";
 
 export const FlexyPanelGroup = ({
   children,
   direction,
+  style,
   ...props
-}: ComponentProps<"div"> & {
-  direction: Direction;
-}) => {
+}: FlexyPanelGroupProps) => {
   const [panelRefs, setPanelRefs] = useState<Array<HTMLDivElement>>([]);
 
   const addPanelRef = useCallback((ref: HTMLDivElement) => {
@@ -29,6 +28,7 @@ export const FlexyPanelGroup = ({
         height: "100%",
         width: "100%",
         flexDirection: direction === "vertical" ? "column" : "row",
+        ...style,
       }}
       {...props}
     >
