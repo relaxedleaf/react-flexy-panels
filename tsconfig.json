@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./packages/react-flexy-panels"
+    },
+    {
+      "path": "./apps/docs"
     }
   ]
 }

@@ -57,7 +57,18 @@
   "generators": {
     "@nx/react": {
       "library": {
+        "style": "tailwind",
+        "linter": "eslint",
         "unitTestRunner": "jest"
+      },
+      "application": {
+        "babel": true,
+        "style": "tailwind",
+        "linter": "eslint",
+        "bundler": "vite"
+      },
+      "component": {
+        "style": "tailwind"
       }
     }
   }
