@@ -1,2 +1,1 @@
-
-export * from './lib/react-flexy-panels';
+export * from "./components";
