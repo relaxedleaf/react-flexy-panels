@@ -1,3 +1,5 @@
+"use client";
+
 import { useFlexyPanelsContext } from "../../hooks";
 import {
   ComponentProps,
@@ -62,6 +64,9 @@ export const FlexyPanelHandle = ({
         const panel1NewSize = panel1Size + dragDelta;
         panel1.style.flex = `${panel1NewSize}px 0`;
         panel2.style.flex = `auto`;
+      } else if (panel1Unit === "px" && panel2Unit === "auto") {
+        const panel1NewSize = panel1Size + dragDelta;
+        panel1.style.flex = `${panel1NewSize}px 0`;
       } else if (panel1Unit === "%" && panel2Unit === "auto") {
         const panel1NewSize = panel1Size + dragDelta;
         panel1.style.flex = `0 0 ${panel1NewSize}px`;

@@ -39,5 +39,10 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx"
+  ],
+  "references": [
+    {
+      "path": "../../packages/react-flexy-panels/tsconfig.lib.json"
+    }
   ]
 }
