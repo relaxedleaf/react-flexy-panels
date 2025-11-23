@@ -29,7 +29,8 @@
     "url": "https://github.com/relaxedleaf/react-flexy-panels/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "type": "module",
   "main": "./dist/index.js",
