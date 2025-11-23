@@ -206,19 +206,9 @@ const Handle = () => {
   return (
     <FlexyPanelHandle
       className={cn(
-        // Base styles
-        "bg-border focus-visible:ring-ring relative flex w-px items-center justify-center",
-        // Pseudo-element for hover area
-        "after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2",
-        "focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden",
-        // Vertical layout styles
-        "data-[direction=vertical]:h-px data-[direction=vertical]:w-full",
-        "data-[direction=vertical]:after:left-0 data-[direction=vertical]:after:h-1",
-        "data-[direction=vertical]:after:w-full data-[direction=vertical]:after:translate-x-0",
-        "data-[direction=vertical]:after:-translate-y-1/2",
-        // Cursor styles
-        "data-[direction=vertical]:cursor-row-resize",
-        "data-[direction=horizontal]:cursor-col-resize"
+        "cursor-pointer relative flex items-center justify-center after:absolute after:bg-border",
+        "data-[direction=vertical]:w-full data-[direction=vertical]:after:left-0 data-[direction=vertical]:after:top-[calc(50%-0.5px)] data-[direction=vertical]:after:h-px data-[direction=vertical]:after:w-full data-[direction=vertical]:[&>div]:rotate-90 data-[direction=vertical]:cursor-row-resize",
+        "data-[direction=horizontal]:h-full data-[direction=horizontal]:after:inset-y-0 data-[direction=horizontal]:after:left-[calc(50%-0.5px)] data-[direction=horizontal]:after:w-px data-[direction=horizontal]:cursor-col-resize"
       )}
     />
   );
