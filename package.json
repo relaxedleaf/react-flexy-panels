@@ -1,11 +1,29 @@
 {
   "name": "@react-flexy-panels/source",
   "version": "0.0.1",
+  "description": "Monorepo for react-flexy-panels - A flexible, resizable panel system for React applications",
   "license": "MIT",
+  "author": {
+    "name": "relaxedleaf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/relaxedleaf/react-flexy-panels.git"
+  },
+  "homepage": "https://github.com/relaxedleaf/react-flexy-panels#readme",
+  "bugs": {
+    "url": "https://github.com/relaxedleaf/react-flexy-panels/issues"
+  },
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
+  "private": true,
+  "scripts": {
+    "start:docs": "pnpm dlx nx dev @react-flexy-panels/docs",
+    "build:docs": "pnpm dlx nx build @react-flexy-panels/docs",
+    "build:component": "pnpm dlx nx build react-flexy-panels"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
@@ -65,9 +83,11 @@
     "lucide-react": "^0.554.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-flexy-panels": "workspace:*",
+    "react-icons": "^5.5.0",
+    "react-router": "^7.9.6",
     "tailwind-merge": "^3.4.0",
-    "tw-animate-css": "^1.4.0",
-    "react-flexy-panels": "workspace:*"
+    "tw-animate-css": "^1.4.0"
   },
   "nx": {
     "includedScripts": [],

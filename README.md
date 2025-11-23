@@ -32,7 +32,11 @@ pnpm add react-flexy-panels
 ### Basic Example
 
 ```tsx
-import { FlexyPanelGroup, FlexyPanel, FlexyPanelHandle } from "react-flexy-panels";
+import {
+  FlexyPanelGroup,
+  FlexyPanel,
+  FlexyPanelHandle,
+} from "react-flexy-panels";
 
 function App() {
   return (
@@ -40,9 +44,9 @@ function App() {
       <FlexyPanel defaultSize={30} defaultSizeUnit="%">
         <div>Left Panel</div>
       </FlexyPanel>
-      
+
       <FlexyPanelHandle />
-      
+
       <FlexyPanel defaultSize="auto">
         <div>Right Panel (auto size)</div>
       </FlexyPanel>
@@ -58,9 +62,9 @@ function App() {
   <FlexyPanel defaultSize={200} defaultSizeUnit="px">
     <div>Top Panel (200px)</div>
   </FlexyPanel>
-  
+
   <FlexyPanelHandle />
-  
+
   <FlexyPanel defaultSize="auto">
     <div>Bottom Panel (fills remaining space)</div>
   </FlexyPanel>
@@ -74,15 +78,15 @@ function App() {
   <FlexyPanel defaultSize={25} defaultSizeUnit="%">
     <div>Panel 1</div>
   </FlexyPanel>
-  
+
   <FlexyPanelHandle />
-  
+
   <FlexyPanel defaultSize={50} defaultSizeUnit="%">
     <div>Panel 2</div>
   </FlexyPanel>
-  
+
   <FlexyPanelHandle />
-  
+
   <FlexyPanel defaultSize="auto">
     <div>Panel 3</div>
   </FlexyPanel>
@@ -97,12 +101,12 @@ The container component that manages panels and their layout direction.
 
 #### Props
 
-| Prop | Type | Required | Description |
-|------|------|----------|-------------|
-| `direction` | `"horizontal" \| "vertical"` | Yes | Layout direction for panels |
-| `children` | `React.ReactNode` | Yes | Panel and handle components |
-| `style` | `React.CSSProperties` | No | Additional CSS styles |
-| `...props` | `div` HTML attributes | No | All standard div props |
+| Prop        | Type                         | Required | Description                 |
+| ----------- | ---------------------------- | -------- | --------------------------- |
+| `direction` | `"horizontal" \| "vertical"` | Yes      | Layout direction for panels |
+| `children`  | `React.ReactNode`            | Yes      | Panel and handle components |
+| `style`     | `React.CSSProperties`        | No       | Additional CSS styles       |
+| `...props`  | `div` HTML attributes        | No       | All standard div props      |
 
 #### Example
 
@@ -118,13 +122,13 @@ Individual panel component that displays content.
 
 #### Props
 
-| Prop | Type | Required | Description |
-|------|------|----------|-------------|
-| `defaultSize` | `number \| "auto"` | Yes | Initial size or "auto" for remaining space |
-| `defaultSizeUnit` | `"px" \| "%"` | No* | Unit for defaultSize (required when defaultSize is a number) |
-| `children` | `React.ReactNode` | Yes | Panel content |
-| `style` | `React.CSSProperties` | No | Additional CSS styles |
-| `...props` | `div` HTML attributes | No | All standard div props |
+| Prop              | Type                  | Required | Description                                                  |
+| ----------------- | --------------------- | -------- | ------------------------------------------------------------ |
+| `defaultSize`     | `number \| "auto"`    | Yes      | Initial size or "auto" for remaining space                   |
+| `defaultSizeUnit` | `"px" \| "%"`         | No\*     | Unit for defaultSize (required when defaultSize is a number) |
+| `children`        | `React.ReactNode`     | Yes      | Panel content                                                |
+| `style`           | `React.CSSProperties` | No       | Additional CSS styles                                        |
+| `...props`        | `div` HTML attributes | No       | All standard div props                                       |
 
 \* `defaultSizeUnit` is not required when `defaultSize` is `"auto"`
 
@@ -150,16 +154,16 @@ Draggable handle component placed between panels to enable resizing.
 
 #### Props
 
-| Prop | Type | Required | Description |
-|------|------|----------|-------------|
-| `onMouseDown` | `(e: React.MouseEvent<HTMLDivElement>) => void` | No | Custom mouse down handler |
-| `style` | `React.CSSProperties` | No | Additional CSS styles |
-| `...props` | `div` HTML attributes | No | All standard div props |
+| Prop          | Type                                            | Required | Description               |
+| ------------- | ----------------------------------------------- | -------- | ------------------------- |
+| `onMouseDown` | `(e: React.MouseEvent<HTMLDivElement>) => void` | No       | Custom mouse down handler |
+| `style`       | `React.CSSProperties`                           | No       | Additional CSS styles     |
+| `...props`    | `div` HTML attributes                           | No       | All standard div props    |
 
 #### Example
 
 ```tsx
-<FlexyPanelHandle 
+<FlexyPanelHandle
   style={{ cursor: "col-resize" }}
   onMouseDown={(e) => console.log("Drag started")}
 />
@@ -184,12 +188,12 @@ The components use minimal inline styles for layout. You can customize appearanc
 ### Custom Handle Styling
 
 ```tsx
-<FlexyPanelHandle 
+<FlexyPanelHandle
   className="custom-handle"
-  style={{ 
+  style={{
     backgroundColor: "#e0e0e0",
     cursor: "col-resize",
-    width: "4px"
+    width: "4px",
   }}
 />
 ```
@@ -226,6 +230,7 @@ const Handle = () => {
 ```
 
 This example:
+
 - Styles the handle differently for horizontal (`data-direction=horizontal`) and vertical (`data-direction=vertical`) layouts
 - Adds a larger hover area using a pseudo-element (`after:`)
 - Includes focus-visible styles for accessibility

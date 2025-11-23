@@ -1,6 +1,33 @@
 {
   "name": "react-flexy-panels",
   "version": "0.0.0",
+  "description": "A flexible, resizable panel system for React applications with support for horizontal and vertical layouts",
+  "keywords": [
+    "react",
+    "panels",
+    "resizable",
+    "flex",
+    "layout",
+    "split-pane",
+    "resize",
+    "draggable",
+    "typescript",
+    "react-components",
+    "ui-components"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "relaxedleaf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/relaxedleaf/react-flexy-panels.git",
+    "directory": "packages/react-flexy-panels"
+  },
+  "homepage": "https://github.com/relaxedleaf/react-flexy-panels#readme",
+  "bugs": {
+    "url": "https://github.com/relaxedleaf/react-flexy-panels/issues"
+  },
   "publishConfig": {
     "access": "public"
   },

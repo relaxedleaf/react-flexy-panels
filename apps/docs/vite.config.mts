@@ -6,6 +6,7 @@ import path from "node:path";
 
 export default defineConfig(() => ({
   root: import.meta.dirname,
+  base: "https://relaxedleaf.github.io/react-flexy-panels/",
   cacheDir: "../../node_modules/.vite/apps/docs",
   server: {
     port: 4200,
@@ -17,7 +18,7 @@ export default defineConfig(() => ({
   },
   plugins: [react(), tailwindcss()],
   build: {
-    outDir: "./dist",
+    outDir: "../../docs",
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
