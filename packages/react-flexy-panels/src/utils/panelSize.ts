@@ -25,8 +25,38 @@ export function updatePanelSizes(props: {
       ? panel2.getBoundingClientRect().width
       : panel2.getBoundingClientRect().height;
 
-  const panel1NewSize = panel1Size + dragDelta;
-  const panel2NewSize = panel2Size - dragDelta;
+  // Get the parent container to check bounds
+  const container = panel1.parentElement;
+  const containerSize = container
+    ? direction === "horizontal"
+      ? container.getBoundingClientRect().width
+      : container.getBoundingClientRect().height
+    : null;
+
+  // Calculate new sizes
+  let panel1NewSize = panel1Size + dragDelta;
+  let panel2NewSize = panel2Size - dragDelta;
+
+  // Constrain sizes to container bounds
+  const minPanelSize = 0;
+  if (containerSize !== null) {
+    // Ensure total doesn't exceed container
+    const totalSize = panel1NewSize + panel2NewSize;
+    if (totalSize > containerSize) {
+      // Scale both panels proportionally to fit within container
+      const scale = containerSize / totalSize;
+      panel1NewSize = panel1NewSize * scale;
+      panel2NewSize = panel2NewSize * scale;
+    }
+    
+    // Ensure panels don't go below minimum (but allow total to be less than container)
+    panel1NewSize = Math.max(minPanelSize, panel1NewSize);
+    panel2NewSize = Math.max(minPanelSize, panel2NewSize);
+  } else {
+    // Fallback: just ensure minimum sizes
+    panel1NewSize = Math.max(minPanelSize, panel1NewSize);
+    panel2NewSize = Math.max(minPanelSize, panel2NewSize);
+  }
 
   // Handle different unit combinations
   if (panel1Unit === "auto" && panel2Unit === "auto") {
