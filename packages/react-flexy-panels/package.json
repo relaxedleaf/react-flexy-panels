@@ -1,6 +1,9 @@
 {
   "name": "react-flexy-panels",
-  "version": "0.0.1",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -8,11 +11,15 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "@react-flexy-panels/source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     }
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "files": [
     "dist",

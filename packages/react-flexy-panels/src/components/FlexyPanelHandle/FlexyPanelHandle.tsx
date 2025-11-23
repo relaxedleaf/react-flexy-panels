@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useCallback, useId } from "react";
 import { useFlexyPanelsContext, usePanelDrag } from "../../hooks";
 import { FlexyPanelHandleProps } from "./types";
 
@@ -16,10 +16,13 @@ export const FlexyPanelHandle = ({
     handleId: id,
   });
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    handleDragMouseDown(e);
-    onMouseDown?.(e);
-  };
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      handleDragMouseDown(e);
+      onMouseDown?.(e);
+    },
+    [handleDragMouseDown, onMouseDown]
+  );
 
   return (
     <div
