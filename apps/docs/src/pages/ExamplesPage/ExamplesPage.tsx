@@ -20,42 +20,6 @@ const Handle = () => {
   );
 };
 
-const VerticalExample = () => {
-  return (
-    <FlexyPanelGroup direction="vertical" className="h-full">
-      <FlexyPanel defaultSize={200} defaultSizeUnit="px">
-        <div className="h-full flex items-center justify-center bg-muted/50 rounded">
-          <div className="text-center">
-            <p className="font-semibold">Top Panel</p>
-            <p className="text-sm text-muted-foreground">200px height</p>
-          </div>
-        </div>
-      </FlexyPanel>
-      <Handle />
-      <FlexyPanel defaultSize="auto">
-        <div className="h-full flex items-center justify-center bg-muted/50 rounded">
-          <div className="text-center">
-            <p className="font-semibold">Bottom Panel</p>
-            <p className="text-sm text-muted-foreground">Auto size</p>
-          </div>
-        </div>
-      </FlexyPanel>
-    </FlexyPanelGroup>
-  );
-};
-
-const verticalExampleCode = `<FlexyPanelGroup direction="vertical">
-  <FlexyPanel defaultSize={200} defaultSizeUnit="px">
-    <div>Top Panel</div>
-  </FlexyPanel>
-  
-  <FlexyPanelHandle />
-  
-  <FlexyPanel defaultSize="auto">
-    <div>Bottom Panel</div>
-  </FlexyPanel>
-</FlexyPanelGroup>`;
-
 const MultiplePanelsExample = () => {
   return (
     <FlexyPanelGroup direction="horizontal" className="h-full">
@@ -180,8 +144,8 @@ export const ExamplesPage = () => {
           bottom panel.
         </Paragraph>
         <CodePreviewTabs
-          preview={<VerticalExample />}
-          code={verticalExampleCode}
+          preview={examples.vertical.preview}
+          code={examples.vertical.code}
           lang="tsx"
           classNames={{ preview: "h-[500px]", code: "h-[500px]" }}
         />
