@@ -87,27 +87,27 @@ export function updatePanelSizes(props: {
 
   // Handle different unit combinations
   if (panel1Unit === "auto" && panel2Unit === "auto") {
-    panel1.style.flex = `${panel1NewSize}px 0`;
+    panel1.style.flex = `0 1 ${panel1NewSize}px`;
   } else if (
     panel1Unit === "auto" &&
     (panel2Unit === "px" || panel2Unit === "%")
   ) {
     panel2.style.flexBasis = `${panel2NewSize}px`;
   } else if (panel1Unit === "px" && panel2Unit === "px") {
-    panel1.style.flex = `${panel1NewSize}px 0`;
+    panel1.style.flex = `0 1 ${panel1NewSize}px`;
     panel2.style.flex = "auto";
   } else if (panel1Unit === "px" && panel2Unit === "%") {
-    panel1.style.flex = `${panel1NewSize}px 0`;
+    panel1.style.flex = `0 1 ${panel1NewSize}px`;
     panel2.style.flex = "auto";
   } else if (panel1Unit === "px" && panel2Unit === "auto") {
-    panel1.style.flex = `${panel1NewSize}px 0`;
+    panel1.style.flex = `0 1 ${panel1NewSize}px`;
   } else if (panel1Unit === "%" && panel2Unit === "auto") {
     panel1.style.flex = `0 0 ${panel1NewSize}px`;
   } else if (panel1Unit === "%" && panel2Unit === "px") {
-    panel1.style.flex = `${panel1NewSize}px 0`;
+    panel1.style.flex = `0 1 ${panel1NewSize}px`;
     panel2.style.flex = "auto";
   } else if (panel1Unit === "%" && panel2Unit === "%") {
-    panel1.style.flex = `${panel1NewSize}px 0`;
+    panel1.style.flex = `0 1 ${panel1NewSize}px`;
     panel2.style.flex = "auto";
   }
 }
