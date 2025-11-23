@@ -1,0 +1,87 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # allow pushing commits
+      id-token: write # allow OIDC token for trusted npm publish
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[no ci]') }}
+    
+    steps:
+      # 1. Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2. Setup Node.js & registry
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+      
+      # 3. Setup pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: 'package.json'
+      
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      # 5. Build all packages
+      - name: Build all packages
+        run: pnpm build:all
+      
+      # 6. Create versions with changesets
+      - name: Create versions with changesets
+        run: pnpm f:cs
+      
+      # 7. Check for changes
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected, skipping publish"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected, proceeding with publish"
+          fi
+      
+      # 8. Configure git
+      - name: Configure git for committing version changes
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      # 9. Commit version changes
+      - name: Commit version changes
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git add .
+          git commit -m "[skip ci]: doc update and/or new package version release"
+      
+      # 10. Publish to npm
+      - name: Publish to npm
+        if: steps.changes.outputs.has_changes == 'true'
+        run: pnpm p:cs
+      
+      # 11. Push changes and tags to main
+      - name: Push changes and tags to main
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git push origin main
+          git push --tags || echo "No tags to push"
+

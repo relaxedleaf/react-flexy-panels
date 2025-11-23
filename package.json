@@ -31,7 +31,7 @@
     "g:cs": "pnpm dlx @changesets/cli",
     "f:cs": "pnpm dlx @changesets/cli version",
     "p:cs": "pnpm dlx @changesets/cli publish",
-    "verify:builds": "pnpm dlx nx run-many -t build"
+    "build:all": "pnpm dlx nx run-many -t build"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
