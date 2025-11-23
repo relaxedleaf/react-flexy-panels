@@ -1,5 +1,17 @@
 # react-flexy-panels
 
+## 1.0.2
+
+### Patch Changes
+
+- chore: re-release 1.0.1 with correct build output
+
+## 1.0.1
+
+### Patch Changes
+
+- chore: expose component props for FlexyPanelGroup and FlexyPanelHandle
+
 ## 1.0.0
 
 ### Major Changes
