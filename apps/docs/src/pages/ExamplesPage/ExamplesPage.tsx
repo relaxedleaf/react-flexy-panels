@@ -1,11 +1,12 @@
 import { cn } from "@rlx-widgets/base";
 import { CodePreviewTabs } from "@rlx-components/code-preview-tabs";
+import { examples } from "./_examples";
+import { Heading1, Heading2, Paragraph } from "@rlx-widgets/typography";
 import {
   FlexyPanel,
   FlexyPanelGroup,
   FlexyPanelHandle,
 } from "react-flexy-panels";
-import { Heading1, Heading2, Paragraph } from "@rlx-widgets/typography";
 
 const Handle = () => {
   return (
@@ -18,48 +19,6 @@ const Handle = () => {
     />
   );
 };
-
-const BasicExample = () => {
-  return (
-    <FlexyPanelGroup direction="horizontal" className="h-full">
-      <FlexyPanel defaultSize={30} defaultSizeUnit="%">
-        <div className="h-full flex items-center justify-center bg-muted/50 rounded">
-          <div className="text-center">
-            <p className="font-semibold">Left Panel</p>
-            <p className="text-sm text-muted-foreground">30% width</p>
-          </div>
-        </div>
-      </FlexyPanel>
-      <Handle />
-      <FlexyPanel defaultSize="auto">
-        <div className="h-full flex items-center justify-center bg-muted/50 rounded">
-          <div className="text-center">
-            <p className="font-semibold">Right Panel</p>
-            <p className="text-sm text-muted-foreground">Auto size</p>
-          </div>
-        </div>
-      </FlexyPanel>
-    </FlexyPanelGroup>
-  );
-};
-
-const basicExampleCode = `import { FlexyPanelGroup, FlexyPanel, FlexyPanelHandle } from "react-flexy-panels";
-
-function App() {
-  return (
-    <FlexyPanelGroup direction="horizontal">
-      <FlexyPanel defaultSize={30} defaultSizeUnit="%">
-        <div>Left Panel</div>
-      </FlexyPanel>
-      
-      <FlexyPanelHandle />
-      
-      <FlexyPanel defaultSize="auto">
-        <div>Right Panel</div>
-      </FlexyPanel>
-    </FlexyPanelGroup>
-  );
-}`;
 
 const VerticalExample = () => {
   return (
@@ -207,8 +166,8 @@ export const ExamplesPage = () => {
           auto-sized panel.
         </Paragraph>
         <CodePreviewTabs
-          preview={<BasicExample />}
-          code={basicExampleCode}
+          preview={examples.basic.preview}
+          code={examples.basic.code}
           lang="tsx"
           classNames={{ preview: "h-[300px]", code: "h-[300px]" }}
         />
