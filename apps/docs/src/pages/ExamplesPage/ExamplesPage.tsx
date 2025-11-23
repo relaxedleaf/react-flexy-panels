@@ -20,48 +20,6 @@ const Handle = () => {
   );
 };
 
-const MultiplePanelsExample = () => {
-  return (
-    <FlexyPanelGroup direction="horizontal" className="h-full">
-      <FlexyPanel defaultSize={25} defaultSizeUnit="%">
-        <div className="h-full flex items-center justify-center bg-muted/50 rounded">
-          <p className="font-semibold">Panel 1</p>
-        </div>
-      </FlexyPanel>
-      <Handle />
-      <FlexyPanel defaultSize={50} defaultSizeUnit="%">
-        <div className="h-full flex items-center justify-center bg-muted/50 rounded">
-          <p className="font-semibold">Panel 2</p>
-        </div>
-      </FlexyPanel>
-      <Handle />
-      <FlexyPanel defaultSize="auto">
-        <div className="h-full flex items-center justify-center bg-muted/50 rounded">
-          <p className="font-semibold">Panel 3</p>
-        </div>
-      </FlexyPanel>
-    </FlexyPanelGroup>
-  );
-};
-
-const multiplePanelsExampleCode = `<FlexyPanelGroup direction="horizontal">
-  <FlexyPanel defaultSize={25} defaultSizeUnit="%">
-    <div>Panel 1</div>
-  </FlexyPanel>
-  
-  <FlexyPanelHandle />
-  
-  <FlexyPanel defaultSize={50} defaultSizeUnit="%">
-    <div>Panel 2</div>
-  </FlexyPanel>
-  
-  <FlexyPanelHandle />
-  
-  <FlexyPanel defaultSize="auto">
-    <div>Panel 3</div>
-  </FlexyPanel>
-</FlexyPanelGroup>`;
-
 const NestedExample = () => {
   return (
     <FlexyPanelGroup direction="horizontal" className="h-full">
@@ -158,8 +116,8 @@ export const ExamplesPage = () => {
           a single group.
         </Paragraph>
         <CodePreviewTabs
-          preview={<MultiplePanelsExample />}
-          code={multiplePanelsExampleCode}
+          preview={examples.multiple.preview}
+          code={examples.multiple.code}
           lang="tsx"
           classNames={{ preview: "h-[300px]", code: "h-[300px]" }}
         />
