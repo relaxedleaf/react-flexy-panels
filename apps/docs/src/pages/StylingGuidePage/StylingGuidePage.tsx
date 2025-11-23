@@ -1,79 +1,18 @@
 import { CodePreviewTabs } from "@rlx-components/code-preview-tabs";
+import { examples } from "./_examples";
 import {
   Heading1,
   Heading2,
   Heading3,
   Paragraph,
 } from "@rlx-widgets/typography";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@rlx-widgets/card";
-import { FlexyPanelGroup, FlexyPanel, FlexyPanelHandle } from "react-flexy-panels";
-import { cn } from "@rlx-widgets/base";
-
-const Handle = () => {
-  return (
-    <FlexyPanelHandle
-      className={cn(
-        "cursor-pointer relative flex items-center justify-center after:absolute after:bg-border",
-        "data-[direction=vertical]:w-full data-[direction=vertical]:after:left-0 data-[direction=vertical]:after:top-[calc(50%-0.5px)] data-[direction=vertical]:after:h-px data-[direction=vertical]:after:w-full data-[direction=vertical]:cursor-row-resize",
-        "data-[direction=horizontal]:h-full data-[direction=horizontal]:after:inset-y-0 data-[direction=horizontal]:after:left-[calc(50%-0.5px)] data-[direction=horizontal]:after:w-px data-[direction=horizontal]:cursor-col-resize"
-      )}
-    />
-  );
-};
-
-const StyledHandleExample = () => {
-  return (
-    <FlexyPanelGroup direction="horizontal" className="h-full">
-      <FlexyPanel defaultSize={30} defaultSizeUnit="%">
-        <div className="h-full flex items-center justify-center bg-muted/50 rounded">
-          <p>Left Panel</p>
-        </div>
-      </FlexyPanel>
-      <Handle />
-      <FlexyPanel defaultSize="auto">
-        <div className="h-full flex items-center justify-center bg-muted/50 rounded">
-          <p>Right Panel</p>
-        </div>
-      </FlexyPanel>
-    </FlexyPanelGroup>
-  );
-};
-
-const customHandleCode = `import { cn } from "clsx"; // or your preferred className utility
-import { FlexyPanelHandle } from "react-flexy-panels";
-
-const Handle = () => {
-  return (
-    <FlexyPanelHandle
-      className={cn(
-        "cursor-pointer relative flex items-center justify-center after:absolute after:bg-border",
-        "data-[direction=vertical]:w-full data-[direction=vertical]:after:left-0 data-[direction=vertical]:after:top-[calc(50%-0.5px)] data-[direction=vertical]:after:h-px data-[direction=vertical]:after:w-full data-[direction=vertical]:cursor-row-resize",
-        "data-[direction=horizontal]:h-full data-[direction=horizontal]:after:inset-y-0 data-[direction=horizontal]:after:left-[calc(50%-0.5px)] data-[direction=horizontal]:after:w-px data-[direction=horizontal]:cursor-col-resize"
-      )}
-    />
-  );
-};`;
-
-const inlineStylesCode = `<FlexyPanelHandle 
-  style={{ 
-    backgroundColor: "#e0e0e0",
-    cursor: "col-resize",
-    width: "4px"
-  }}
-/>`;
-
-const classNameCode = `<FlexyPanelHandle className="custom-handle" />
-
-/* CSS */
-.custom-handle {
-  background-color: #e0e0e0;
-  cursor: col-resize;
-  width: 4px;
-}
-
-.custom-handle:hover {
-  background-color: #b0b0b0;
-}`;
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@rlx-widgets/card";
 
 export const StylingGuidePage = () => {
   return (
@@ -96,8 +35,12 @@ export const StylingGuidePage = () => {
         </CardHeader>
         <CardContent>
           <ul className="list-disc list-inside space-y-2 text-sm">
-            <li>Passing <code>style</code> props to components</li>
-            <li>Using CSS classes with the <code>className</code> prop</li>
+            <li>
+              Passing <code>style</code> props to components
+            </li>
+            <li>
+              Using CSS classes with the <code>className</code> prop
+            </li>
             <li>Targeting the component's HTML structure with CSS selectors</li>
           </ul>
         </CardContent>
@@ -111,38 +54,38 @@ export const StylingGuidePage = () => {
           vertical layouts. Here's a fully styled handle using Tailwind CSS:
         </Paragraph>
         <CodePreviewTabs
-          preview={<StyledHandleExample />}
-          code={customHandleCode}
+          preview={examples.Tailwind.preview}
+          code={examples.Tailwind.code}
           lang="tsx"
           classNames={{ preview: "h-[300px]", code: "h-[300px]" }}
         />
       </div>
 
-      {/* <div>
+      <div>
         <Heading2>Using Inline Styles</Heading2>
         <Paragraph className="text-muted-foreground mt-2 mb-4">
           You can pass inline styles directly to components:
         </Paragraph>
         <CodePreviewTabs
-          code={inlineStylesCode}
-          preview={<div className="h-full flex items-center justify-center bg-muted/50 rounded">Inline Styles Example</div>}
+          code={examples.Inline.code}
+          preview={examples.Inline.preview}
           lang="tsx"
-          classNames={{ preview: "h-[150px]", code: "h-[150px]" }}
+          classNames={{ preview: "h-[300px]", code: "h-[300px]" }}
         />
       </div>
 
       <div>
-        <Heading2>Using CSS Classes</Heading2>
+        <Heading2>Using CSS Selectors</Heading2>
         <Paragraph className="text-muted-foreground mt-2 mb-4">
-          You can also use CSS classes for styling:
+          You can also use CSS selectors for styling:
         </Paragraph>
         <CodePreviewTabs
-          code={classNameCode}
-          preview={<div className="h-full flex items-center justify-center bg-muted/50 rounded">CSS Classes Example</div>}
+          code={examples.CSS.code}
+          preview={examples.CSS.preview}
           lang="tsx"
-          classNames={{ preview: "h-[200px]", code: "h-[200px]" }}
+          classNames={{ preview: "h-[300px]", code: "h-[300px]" }}
         />
-      </div> */}
+      </div>
 
       <Card>
         <CardHeader>
@@ -162,11 +105,13 @@ export const StylingGuidePage = () => {
               </Paragraph>
             </div>
             <div>
-              <Heading3 className="text-sm font-semibold mb-2">data-unit</Heading3>
+              <Heading3 className="text-sm font-semibold mb-2">
+                data-unit
+              </Heading3>
               <Paragraph className="text-sm text-muted-foreground">
                 The <code>FlexyPanel</code> component includes a{" "}
-                <code>data-unit</code> attribute that indicates the size unit
-                (<code>"px"</code>, <code>"%"</code>, or <code>"auto"</code>).
+                <code>data-unit</code> attribute that indicates the size unit (
+                <code>"px"</code>, <code>"%"</code>, or <code>"auto"</code>).
               </Paragraph>
             </div>
           </div>
@@ -203,4 +148,3 @@ export const StylingGuidePage = () => {
     </div>
   );
 };
-
