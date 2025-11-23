@@ -6,6 +6,10 @@
   "author": {
     "name": "relaxedleaf"
   },
+  "engines": {
+    "node": "24.11.0",
+    "pnpm": "10.23.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/relaxedleaf/react-flexy-panels.git"
@@ -22,11 +26,15 @@
   "scripts": {
     "start:docs": "pnpm dlx nx dev @react-flexy-panels/docs",
     "build:docs": "pnpm dlx nx build @react-flexy-panels/docs",
-    "build:component": "pnpm dlx nx build react-flexy-panels"
+    "build:component": "pnpm dlx nx build react-flexy-panels",
+    "g:cs": "pnpm dlx @changesets/cli",
+    "f:cs": "pnpm dlx @changesets/cli version",
+    "p:cs": "pnpm dlx @changesets/cli publish"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
+    "@changesets/cli": "^2.29.7",
     "@eslint/js": "^9.8.0",
     "@nx/eslint": "22.1.1",
     "@nx/eslint-plugin": "22.1.1",
