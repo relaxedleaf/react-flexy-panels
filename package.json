@@ -10,6 +10,7 @@
     "node": "24.11.0",
     "pnpm": "10.23.0"
   },
+  "packageManager": "pnpm@10.23.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/relaxedleaf/react-flexy-panels.git"
@@ -29,7 +30,8 @@
     "build:component": "pnpm dlx nx build react-flexy-panels",
     "g:cs": "pnpm dlx @changesets/cli",
     "f:cs": "pnpm dlx @changesets/cli version",
-    "p:cs": "pnpm dlx @changesets/cli publish"
+    "p:cs": "pnpm dlx @changesets/cli publish",
+    "verify:builds": "pnpm dlx nx run-many -t build"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
