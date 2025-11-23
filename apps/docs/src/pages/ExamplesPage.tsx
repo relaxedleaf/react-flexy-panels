@@ -1,12 +1,11 @@
+import { cn } from "@rlx-widgets/base";
 import { CodePreviewTabs } from "@rlx-components/code-preview-tabs";
 import {
-  Heading1,
-  Heading2,
-  Paragraph,
-} from "@rlx-widgets/typography";
-import { FlexyPanelGroup, FlexyPanel, FlexyPanelHandle } from "react-flexy-panels";
-import { cn } from "@rlx-widgets/base";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@rlx-widgets/card";
+  FlexyPanel,
+  FlexyPanelGroup,
+  FlexyPanelHandle,
+} from "react-flexy-panels";
+import { Heading1, Heading2, Paragraph } from "@rlx-widgets/typography";
 
 const Handle = () => {
   return (
@@ -196,14 +195,16 @@ export const ExamplesPage = () => {
       <div>
         <Heading1>Examples</Heading1>
         <Paragraph className="text-muted-foreground mt-4">
-          Interactive examples demonstrating various use cases for react-flexy-panels.
+          Interactive examples demonstrating various use cases for
+          react-flexy-panels.
         </Paragraph>
       </div>
 
       <div>
         <Heading2>Basic Horizontal Layout</Heading2>
         <Paragraph className="text-muted-foreground mt-2 mb-4">
-          A simple two-panel horizontal layout with one fixed-size panel and one auto-sized panel.
+          A simple two-panel horizontal layout with one fixed-size panel and one
+          auto-sized panel.
         </Paragraph>
         <CodePreviewTabs
           preview={<BasicExample />}
@@ -216,7 +217,8 @@ export const ExamplesPage = () => {
       <div>
         <Heading2>Vertical Layout</Heading2>
         <Paragraph className="text-muted-foreground mt-2 mb-4">
-          A vertical layout with a fixed-height top panel and an auto-sized bottom panel.
+          A vertical layout with a fixed-height top panel and an auto-sized
+          bottom panel.
         </Paragraph>
         <CodePreviewTabs
           preview={<VerticalExample />}
@@ -229,7 +231,8 @@ export const ExamplesPage = () => {
       <div>
         <Heading2>Multiple Panels</Heading2>
         <Paragraph className="text-muted-foreground mt-2 mb-4">
-          A layout with three panels, demonstrating multiple resizable panels in a single group.
+          A layout with three panels, demonstrating multiple resizable panels in
+          a single group.
         </Paragraph>
         <CodePreviewTabs
           preview={<MultiplePanelsExample />}
@@ -242,7 +245,8 @@ export const ExamplesPage = () => {
       <div>
         <Heading2>Nested Panels</Heading2>
         <Paragraph className="text-muted-foreground mt-2 mb-4">
-          Nested panel groups allow you to create complex layouts with both horizontal and vertical arrangements.
+          Nested panel groups allow you to create complex layouts with both
+          horizontal and vertical arrangements.
         </Paragraph>
         <CodePreviewTabs
           preview={<NestedExample />}
@@ -254,4 +258,3 @@ export const ExamplesPage = () => {
     </div>
   );
 };
-
