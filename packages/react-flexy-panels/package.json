@@ -1,6 +1,6 @@
 {
   "name": "react-flexy-panels",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A flexible, resizable panel system for React applications with support for horizontal and vertical layouts",
   "keywords": [
     "react",

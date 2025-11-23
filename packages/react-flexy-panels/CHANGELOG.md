@@ -1,5 +1,13 @@
 # react-flexy-panels
 
+## 1.0.4
+
+### Patch Changes
+
+- 30068a3: chore: expose source code when publish
+- 83083af: feat: implement forwardRef to FlexyPanelHandle
+- 45eb47d: fix: overflow outside of parent container
+
 ## 1.0.3
 
 ### Patch Changes
