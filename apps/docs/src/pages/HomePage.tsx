@@ -1,8 +1,8 @@
+import { FlexyHandle } from "../components";
 import {
   FlexyPanelGroup,
   FlexyPanel,
 } from "react-flexy-panels";
-import { FlexyHandle } from "../components";
 
 export const HomePage = () => {
   return (
