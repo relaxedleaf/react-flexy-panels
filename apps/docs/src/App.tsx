@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/examples" element={<ExamplesPage />} />
         <Route path="/styling" element={<StylingGuidePage />} />
       </Routes>
-    </RootLayout>
+
   );
 };
 
