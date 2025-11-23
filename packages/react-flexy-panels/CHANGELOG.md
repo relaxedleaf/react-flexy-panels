@@ -1,5 +1,13 @@
 # react-flexy-panels
 
+## 1.1.1
+
+### Patch Changes
+
+- fc5b01b: fix: overflow issue for multiple panels
+- 5e70d97: fix: panel jumps due to flex auto
+- 0f09bc4: fix: set proper syntax for setting flex using js
+
 ## 1.1.0
 
 ### Minor Changes
