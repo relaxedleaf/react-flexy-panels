@@ -16,7 +16,7 @@ import {
 
 export const StylingGuidePage = () => {
   return (
-    <div className="space-y-8">
+    <div className="space-y-16">
       <div>
         <Heading1>Styling Guide</Heading1>
         <Paragraph className="text-muted-foreground mt-4">
@@ -62,19 +62,6 @@ export const StylingGuidePage = () => {
       </div>
 
       <div>
-        <Heading2>Using Inline Styles</Heading2>
-        <Paragraph className="text-muted-foreground mt-2 mb-4">
-          You can pass inline styles directly to components:
-        </Paragraph>
-        <CodePreviewTabs
-          code={examples.Inline.code}
-          preview={examples.Inline.preview}
-          lang="tsx"
-          classNames={{ preview: "h-[300px]", code: "h-[300px]" }}
-        />
-      </div>
-
-      <div>
         <Heading2>Using CSS Selectors</Heading2>
         <Paragraph className="text-muted-foreground mt-2 mb-4">
           You can also use CSS selectors for styling:
@@ -82,6 +69,19 @@ export const StylingGuidePage = () => {
         <CodePreviewTabs
           code={examples.CSS.code}
           preview={examples.CSS.preview}
+          lang="tsx"
+          classNames={{ preview: "h-[300px]", code: "h-[300px]" }}
+        />
+      </div>
+
+      <div>
+        <Heading2>Using Inline Styles</Heading2>
+        <Paragraph className="text-muted-foreground mt-2 mb-4">
+          You can pass inline styles directly to components:
+        </Paragraph>
+        <CodePreviewTabs
+          code={examples.Inline.code}
+          preview={examples.Inline.preview}
           lang="tsx"
           classNames={{ preview: "h-[300px]", code: "h-[300px]" }}
         />
