@@ -5,10 +5,10 @@ import { useFlexyPanelsContext, usePanelDrag } from "../../hooks";
 import { FlexyPanelHandleProps } from "./types";
 
 export const FlexyPanelHandle = forwardRef<HTMLDivElement, FlexyPanelHandleProps>(
-  ({ onMouseDown, ...props }, ref) => {
+  ({ onMouseDown, onTouchStart, ...props }, ref) => {
     const id = useId();
     const { direction, panelRefs, addPanelRef } = useFlexyPanelsContext();
-    const { handleMouseDown: handleDragMouseDown } = usePanelDrag({
+    const { handleMouseDown: handleDragMouseDown, handleTouchStart: handleDragTouchStart } = usePanelDrag({
       direction,
       panelRefs,
       handleId: id,
@@ -20,6 +20,14 @@ export const FlexyPanelHandle = forwardRef<HTMLDivElement, FlexyPanelHandleProps
         onMouseDown?.(e);
       },
       [handleDragMouseDown, onMouseDown]
+    );
+
+    const handleTouchStartEvent = useCallback(
+      (e: React.TouchEvent<HTMLDivElement>) => {
+        handleDragTouchStart(e);
+        onTouchStart?.(e);
+      },
+      [handleDragTouchStart, onTouchStart]
     );
 
     // Store the forwarded ref in a ref to avoid dependency issues
@@ -51,6 +59,7 @@ export const FlexyPanelHandle = forwardRef<HTMLDivElement, FlexyPanelHandleProps
         ref={setRef}
         data-direction={direction}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStartEvent}
         {...props}
       />
     );

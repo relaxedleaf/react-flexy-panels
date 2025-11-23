@@ -19,13 +19,9 @@ export const usePanelDrag = ({
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef<number>(0);
 
-  const onDrag = useCallback(
-    (e: MouseEvent) => {
-      if (!isDragging) {
-        return;
-      }
-
-      const dragCurrent = direction === "horizontal" ? e.clientX : e.clientY;
+  const updateDragPosition = useCallback(
+    (clientX: number, clientY: number) => {
+      const dragCurrent = direction === "horizontal" ? clientX : clientY;
       const dragDelta = dragCurrent - dragStartRef.current;
 
       const handleIndex = panelRefs.findIndex((ref) => ref.id === handleId);
@@ -47,7 +43,30 @@ export const usePanelDrag = ({
       });
       dragStartRef.current = dragCurrent;
     },
-    [direction, handleId, isDragging, panelRefs]
+    [direction, handleId, panelRefs]
+  );
+
+  const onDrag = useCallback(
+    (e: MouseEvent) => {
+      if (!isDragging) {
+        return;
+      }
+      updateDragPosition(e.clientX, e.clientY);
+    },
+    [isDragging, updateDragPosition]
+  );
+
+  const onTouchDrag = useCallback(
+    (e: TouchEvent) => {
+      if (!isDragging || e.touches.length === 0) {
+        return;
+      }
+      // Prevent default to avoid scrolling while dragging
+      e.preventDefault();
+      const touch = e.touches[0];
+      updateDragPosition(touch.clientX, touch.clientY);
+    },
+    [isDragging, updateDragPosition]
   );
 
   const handleMouseDown = useCallback(
@@ -58,24 +77,46 @@ export const usePanelDrag = ({
     [direction]
   );
 
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>) => {
+      if (e.touches.length > 0) {
+        setIsDragging(true);
+        const touch = e.touches[0];
+        dragStartRef.current = direction === "horizontal" ? touch.clientX : touch.clientY;
+      }
+    },
+    [direction]
+  );
+
   useEffect(() => {
     const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    const handleTouchEnd = () => {
       setIsDragging(false);
     };
 
     if (isDragging) {
       document.addEventListener("mousemove", onDrag);
       document.addEventListener("mouseup", handleMouseUp);
+      document.addEventListener("touchmove", onTouchDrag, { passive: false });
+      document.addEventListener("touchend", handleTouchEnd);
+      document.addEventListener("touchcancel", handleTouchEnd);
     }
 
     return () => {
       document.removeEventListener("mousemove", onDrag);
       document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchmove", onTouchDrag);
+      document.removeEventListener("touchend", handleTouchEnd);
+      document.removeEventListener("touchcancel", handleTouchEnd);
     };
-  }, [isDragging, onDrag]);
+  }, [isDragging, onDrag, onTouchDrag]);
 
   return {
     isDragging,
     handleMouseDown,
+    handleTouchStart,
   };
 };
