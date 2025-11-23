@@ -1,5 +1,11 @@
 # react-flexy-panels
 
+## 1.0.3
+
+### Patch Changes
+
+- chore: update README
+
 ## 1.0.2
 
 ### Patch Changes
