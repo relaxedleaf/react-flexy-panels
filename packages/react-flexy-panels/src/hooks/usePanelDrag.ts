@@ -98,11 +98,27 @@ export const usePanelDrag = ({
     };
 
     if (isDragging) {
+      // Store original user-select value
+      const originalUserSelect = document.body.style.userSelect;
+      // Disable text selection during drag
+      document.body.style.userSelect = "none";
+      
       document.addEventListener("mousemove", onDrag);
       document.addEventListener("mouseup", handleMouseUp);
       document.addEventListener("touchmove", onTouchDrag, { passive: false });
       document.addEventListener("touchend", handleTouchEnd);
       document.addEventListener("touchcancel", handleTouchEnd);
+
+      return () => {
+        // Restore original user-select value
+        document.body.style.userSelect = originalUserSelect;
+        
+        document.removeEventListener("mousemove", onDrag);
+        document.removeEventListener("mouseup", handleMouseUp);
+        document.removeEventListener("touchmove", onTouchDrag);
+        document.removeEventListener("touchend", handleTouchEnd);
+        document.removeEventListener("touchcancel", handleTouchEnd);
+      };
     }
 
     return () => {
