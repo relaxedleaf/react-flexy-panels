@@ -1,5 +1,11 @@
 # react-flexy-panels
 
+## 1.1.0
+
+### Minor Changes
+
+- 1f93069: feat: add mobile / touch support
+
 ## 1.0.4
 
 ### Patch Changes
