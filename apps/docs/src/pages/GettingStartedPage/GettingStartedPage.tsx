@@ -1,4 +1,6 @@
 import { CodePreviewTabs } from "@rlx-components/code-preview-tabs";
+import { InlineCode } from "../../components";
+import { variants } from "./_examples";
 import {
   Heading1,
   Heading2,
@@ -12,60 +14,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@rlx-widgets/card";
-import { InlineCode } from "../../components";
-import { variants } from "./_examples";
-
-const basicExamplePreview = (
-  <div className="flex h-full items-center justify-center bg-muted/50 rounded">
-    <div className="text-center">
-      <div className="mb-2 p-4 bg-background rounded border">Left Panel</div>
-      <div className="p-4 bg-background rounded border">Right Panel</div>
-    </div>
-  </div>
-);
-
-const basicExampleCode = `import { FlexyPanelGroup, FlexyPanel, FlexyPanelHandle } from "react-flexy-panels";
-
-function App() {
-  return (
-    <FlexyPanelGroup direction="horizontal">
-      <FlexyPanel defaultSize={30} defaultSizeUnit="%">
-        <div>Left Panel</div>
-      </FlexyPanel>
-      
-      <FlexyPanelHandle />
-      
-      <FlexyPanel defaultSize="auto">
-        <div>Right Panel (auto size)</div>
-      </FlexyPanel>
-    </FlexyPanelGroup>
-  );
-}`;
-
-const verticalExamplePreview = (
-  <div className="flex flex-col h-full items-center justify-center bg-muted/50 rounded">
-    <div className="text-center w-full">
-      <div className="mb-2 p-4 bg-background rounded border">
-        Top Panel (200px)
-      </div>
-      <div className="p-4 bg-background rounded border">
-        Bottom Panel (fills remaining space)
-      </div>
-    </div>
-  </div>
-);
-
-const verticalExampleCode = `<FlexyPanelGroup direction="vertical">
-  <FlexyPanel defaultSize={200} defaultSizeUnit="px">
-    <div>Top Panel (200px)</div>
-  </FlexyPanel>
-  
-  <FlexyPanelHandle />
-  
-  <FlexyPanel defaultSize="auto">
-    <div>Bottom Panel (fills remaining space)</div>
-  </FlexyPanel>
-</FlexyPanelGroup>`;
 
 export const GettingStartedPage = () => {
   return (
