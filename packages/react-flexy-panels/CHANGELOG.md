@@ -1,5 +1,11 @@
 # react-flexy-panels
 
+## 1.1.2
+
+### Patch Changes
+
+- 18bda30: fix: disable user select when dragging
+
 ## 1.1.1
 
 ### Patch Changes
