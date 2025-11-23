@@ -11,6 +11,7 @@ import {
 const App = () => {
   return (
     <RootLayout>
+      <h1>Hello World</h1>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/getting-started" element={<GettingStartedPage />} />
@@ -18,7 +19,7 @@ const App = () => {
         <Route path="/examples" element={<ExamplesPage />} />
         <Route path="/styling" element={<StylingGuidePage />} />
       </Routes>
-
+    </RootLayout>
   );
 };
 
