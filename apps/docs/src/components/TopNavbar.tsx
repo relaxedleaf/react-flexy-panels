@@ -7,7 +7,9 @@ export const TopNav = () => {
   return (
     <header className="bg-background sticky top-0 z-50 flex w-full items-center border-b">
       <div className="flex h-(--header-height) w-full items-center justify-between px-4">
-        <h1 className="text-ellipsis line-clamp-1">React Flexy Panels</h1>
+        <Link to="/">
+          <h1 className="text-ellipsis line-clamp-1">React Flexy Panels</h1>
+        </Link>
         <div className="flex items-center">
           <Link
             to="https://github.com/relaxedleaf/react-flexy-panels"
