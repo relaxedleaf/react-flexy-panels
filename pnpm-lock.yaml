@@ -12,11 +12,11 @@ importers:
         specifier: ^1.2.4
         version: 1.2.4(@types/react@19.2.6)(react@19.2.0)
       '@rlx-components/code-preview-tabs':
-        specifier: ^0.0.4
-        version: 0.0.4(2e60a135296b1bb4424bbdd62f9a3fa4)
+        specifier: ^0.0.6
+        version: 0.0.6(e501046ad37f8901670604d2f304b6ff)
       '@rlx-components/shiki-code-block':
-        specifier: ^0.0.2
-        version: 0.0.2(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(hast-util-to-jsx-runtime@2.3.6)(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(shiki@3.15.0)
+        specifier: ^0.0.4
+        version: 0.0.4(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(hast-util-to-jsx-runtime@2.3.6)(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(shiki@3.15.0)
       '@rlx-components/theme-toggle':
         specifier: ^0.0.2
         version: 0.0.2(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -2070,21 +2070,21 @@ packages:
   '@radix-ui/rect@1.1.1':
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
 
-  '@rlx-components/code-preview-tabs@0.0.4':
-    resolution: {integrity: sha512-isJUgegfvZlWiYKBQgSPgoazIPr6YiGD2zYnzIE6PAe+3F6OZkVLllnhgzAmBs1q5ajwMppEC+94YYlND4CfGQ==}
+  '@rlx-components/code-preview-tabs@0.0.6':
+    resolution: {integrity: sha512-tvtn2RREydcMIgpc9Idf8lwSEnW4734MHoukDU4Xu9DEiLnE9u9ZGZJ2lDAv4ZFjQVrIR5jvJ2lNf7pWwXvMag==}
     peerDependencies:
-      '@rlx-components/shiki-code-block': '>=0.0.2'
+      '@rlx-components/shiki-code-block': '>=0.0.4'
       '@rlx-widgets/base': '>=0.0.2'
       '@rlx-widgets/select': '>=0.0.2'
       '@rlx-widgets/tabs': '>=0.0.3'
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@rlx-components/shiki-code-block@0.0.2':
-    resolution: {integrity: sha512-IdsIpnv0JhE4Zi5ctqT5NHZDNkMtGT8fXnaDDezNS1sJ89qhVBeXD7JriL6lwRJpNfKbfolslIyo/1FjNxSg7g==}
+  '@rlx-components/shiki-code-block@0.0.4':
+    resolution: {integrity: sha512-HPt7sdn7G8m6kuPjVgx++iCPT9oNE3u+EKtvF4KjDvRSb1WA4o5Kgu4WsQ7ghkd14fU5x8mXmtIEM49fPtDV1g==}
     peerDependencies:
-      '@rlx-widgets/base': '>=0.0.2'
-      '@rlx-widgets/button': '>=0.0.1'
+      '@rlx-widgets/base': '>=0.0.3'
+      '@rlx-widgets/button': '>=0.0.2'
       hast-util-to-jsx-runtime: '>=2.3.6'
       lucide-react: '>=0.525.0'
       react: '>=18.0.0'
@@ -10761,16 +10761,16 @@ snapshots:
 
   '@radix-ui/rect@1.1.1': {}
 
-  '@rlx-components/code-preview-tabs@0.0.4(2e60a135296b1bb4424bbdd62f9a3fa4)':
+  '@rlx-components/code-preview-tabs@0.0.6(e501046ad37f8901670604d2f304b6ff)':
     dependencies:
-      '@rlx-components/shiki-code-block': 0.0.2(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(hast-util-to-jsx-runtime@2.3.6)(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(shiki@3.15.0)
+      '@rlx-components/shiki-code-block': 0.0.4(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(hast-util-to-jsx-runtime@2.3.6)(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(shiki@3.15.0)
       '@rlx-widgets/base': 0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0)
       '@rlx-widgets/select': 0.0.2(@radix-ui/react-select@2.2.6(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@rlx-widgets/tabs': 0.0.3(@radix-ui/react-tabs@1.1.13(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@rlx-components/shiki-code-block@0.0.2(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(hast-util-to-jsx-runtime@2.3.6)(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(shiki@3.15.0)':
+  '@rlx-components/shiki-code-block@0.0.4(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(hast-util-to-jsx-runtime@2.3.6)(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(shiki@3.15.0)':
     dependencies:
       '@rlx-widgets/base': 0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0)
       '@rlx-widgets/button': 0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
