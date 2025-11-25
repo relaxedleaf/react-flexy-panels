@@ -1,5 +1,5 @@
 import { CodePreviewTabs } from "@rlx-components/code-preview-tabs";
-import { InlineCode } from "../../components";
+import { InlineCode } from "@rlx-components/inline-code";
 import { variants } from "./_examples";
 import {
   Heading1,
