@@ -158,6 +158,10 @@
 	@apply bg-transparent;
 }
 
+.dark-scroll::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/40;
+}
+
 pre {
   font-family: "Lato";
 }
