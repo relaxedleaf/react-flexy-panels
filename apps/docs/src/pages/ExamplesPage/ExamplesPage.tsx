@@ -136,6 +136,21 @@ export const ExamplesPage = () => {
           classNames={{ preview: "h-[300px]", code: "h-[300px]" }}
         />
       </div>
+
+      <div>
+        <Heading2>Programmatic Size Control</Heading2>
+        <Paragraph className="text-muted-foreground mt-2 mb-4">
+          Use the <code>ref</code> prop and <code>setSize</code> method to
+          programmatically control panel sizes. This example demonstrates
+          dynamic size updates using input fields.
+        </Paragraph>
+        <CodePreviewTabs
+          preview={examples.programmatic.preview}
+          code={examples.programmatic.code}
+          lang="tsx"
+          classNames={{ preview: "h-[425px] p-8 lg:p-14 overflow-y-scroll", code: "h-[425px]" }}
+        />
+      </div>
     </div>
   );
 };
