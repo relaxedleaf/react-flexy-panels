@@ -8,7 +8,8 @@ import {
   TableHead,
   TableCell,
 } from "@rlx-widgets/table";
-import { CodeBlock } from "../components";
+import { CodeBlock, InlineCode } from "../components";
+import { ShikiCodeBlock } from "@rlx-components/shiki-code-block";
 
 export const ApiReferencePage = () => {
   return (
@@ -115,6 +116,18 @@ export const ApiReferencePage = () => {
                 </TableRow>
                 <TableRow>
                   <TableCell>
+                    <code>ref</code>
+                  </TableCell>
+                  <TableCell>
+                    <code>RefObject&lt;FlexyPanelRef&gt;</code>
+                  </TableCell>
+                  <TableCell>No</TableCell>
+                  <TableCell>
+                    Ref to access panel methods for dynamic size control
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
                     <code>...props</code>
                   </TableCell>
                   <TableCell>
@@ -129,6 +142,85 @@ export const ApiReferencePage = () => {
               * <code>defaultSizeUnit</code> is not required when{" "}
               <code>defaultSize</code> is <code>"auto"</code>
             </Paragraph>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle>Ref API</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Paragraph className="text-muted-foreground mb-4">
+              The <code>FlexyPanel</code> component supports ref forwarding,
+              allowing you to programmatically control panel size. The ref
+              provides a <code>setSize</code> method for dynamic size updates.
+            </Paragraph>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Method</TableHead>
+                  <TableHead>Type</TableHead>
+                  <TableHead>Description</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>
+                    <code>setSize</code>
+                  </TableCell>
+                  <TableCell>
+                    <InlineCode className="px-2">
+                      <code>
+                        {"("}
+                        {"{"} size: "auto" {"}"} | {"{"} size: number, unit:
+                        "px" | "%" {"}"}
+                        {")"} =&gt; void
+                      </code>
+                    </InlineCode>
+                  </TableCell>
+                  <TableCell>
+                    Dynamically set the panel size. Use{" "}
+                    <code>
+                      {"{"} size: "auto" {"}"}
+                    </code>{" "}
+                    for auto-sizing or{" "}
+                    <code>
+                      {"{"} size: number, unit: "px" | "%" {"}"}
+                    </code>{" "}
+                    for a specific size.
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <Paragraph className="text-sm text-muted-foreground mt-4 mb-2">
+              Example usage:
+            </Paragraph>
+            <ShikiCodeBlock
+              code={`import { useRef } from "react";
+import { FlexyPanel, type FlexyPanelRef } from "react-flexy-panels";
+
+function MyComponent() {
+  const panelRef = useRef<FlexyPanelRef>(null);
+
+  const handleResize = () => {
+    // Set size to 300px
+    panelRef.current?.setSize({ size: 300, unit: "px" });
+    
+    // Or set to 50% width
+    panelRef.current?.setSize({ size: 50, unit: "%" });
+    
+    // Or set to auto
+    panelRef.current?.setSize({ size: "auto" });
+  };
+
+  return (
+    <FlexyPanel ref={panelRef} defaultSize={100} defaultSizeUnit="px">
+      Content
+    </FlexyPanel>
+  );
+}`}
+              lang={"tsx"}
+            ></ShikiCodeBlock>
           </CardContent>
         </Card>
       </div>
@@ -178,7 +270,7 @@ export const ApiReferencePage = () => {
           point:
         </Paragraph>
         <CodeBlock>
-          import type {"{"} Direction {"}"} from "react-flexy-panels";
+          {`import type { Direction, FlexyPanelRef } from "react-flexy-panels";`}
         </CodeBlock>
       </div>
     </div>
