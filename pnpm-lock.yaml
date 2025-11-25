@@ -11,12 +11,15 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.2.4
         version: 1.2.4(@types/react@19.2.6)(react@19.2.0)
+      '@rlx-components/code-block':
+        specifier: ^0.0.1
+        version: 0.0.1(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@rlx-components/code-preview-tabs':
         specifier: ^0.0.6
         version: 0.0.6(e501046ad37f8901670604d2f304b6ff)
       '@rlx-components/inline-code':
-        specifier: ^0.0.1
-        version: 0.0.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^0.0.2
+        version: 0.0.2(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@rlx-components/shiki-code-block':
         specifier: ^0.0.4
         version: 0.0.4(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(hast-util-to-jsx-runtime@2.3.6)(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(shiki@3.15.0)
@@ -2111,6 +2114,13 @@ packages:
   '@radix-ui/rect@1.1.1':
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
 
+  '@rlx-components/code-block@0.0.1':
+    resolution: {integrity: sha512-oH/e/Xbyax6XdPf3h42o8m+7ZMArdekcDaPfKm0sQMNyx40v/XfRb9bifBPg7H+JX8ZKovGG3d8FUTTCapn7ug==}
+    peerDependencies:
+      '@rlx-widgets/base': '>=0.0.3'
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+
   '@rlx-components/code-preview-tabs@0.0.6':
     resolution: {integrity: sha512-tvtn2RREydcMIgpc9Idf8lwSEnW4734MHoukDU4Xu9DEiLnE9u9ZGZJ2lDAv4ZFjQVrIR5jvJ2lNf7pWwXvMag==}
     peerDependencies:
@@ -2121,9 +2131,10 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@rlx-components/inline-code@0.0.1':
-    resolution: {integrity: sha512-MxLm0vbthiaA3tLzkavYSPCcdK0/PfmeygGjQzGlVOR90E1h6q11rxufCBnRtJRkPR3PSLnqieL3QYapIO3evQ==}
+  '@rlx-components/inline-code@0.0.2':
+    resolution: {integrity: sha512-TLDgrcfcVCNhhbLBVhBMRH+ekFEIOqNHtOrLtI2o9gC9FGte6wYw19ioOh6ylM3vwVwReBffWQE7W9BgOjC7mg==}
     peerDependencies:
+      '@rlx-widgets/base': '>=0.0.3'
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
@@ -10865,6 +10876,12 @@ snapshots:
 
   '@radix-ui/rect@1.1.1': {}
 
+  '@rlx-components/code-block@0.0.1(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      '@rlx-widgets/base': 0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+
   '@rlx-components/code-preview-tabs@0.0.6(e501046ad37f8901670604d2f304b6ff)':
     dependencies:
       '@rlx-components/shiki-code-block': 0.0.4(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(hast-util-to-jsx-runtime@2.3.6)(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(shiki@3.15.0)
@@ -10874,8 +10891,9 @@ snapshots:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@rlx-components/inline-code@0.0.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@rlx-components/inline-code@0.0.2(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
+      '@rlx-widgets/base': 0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 

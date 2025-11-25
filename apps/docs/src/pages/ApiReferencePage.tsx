@@ -8,7 +8,7 @@ import {
   TableHead,
   TableCell,
 } from "@rlx-widgets/table";
-import { CodeBlock } from "../components";
+import { CodeBlock } from "@rlx-components/code-block";
 import { ShikiCodeBlock } from "@rlx-components/shiki-code-block";
 import { InlineCode } from "@rlx-components/inline-code";
 
@@ -270,7 +270,7 @@ function MyComponent() {
           definitions. All components and types are exported from the main entry
           point:
         </Paragraph>
-        <CodeBlock>
+        <CodeBlock className="mt-4">
           {`import type { Direction, FlexyPanelRef } from "react-flexy-panels";`}
         </CodeBlock>
       </div>
