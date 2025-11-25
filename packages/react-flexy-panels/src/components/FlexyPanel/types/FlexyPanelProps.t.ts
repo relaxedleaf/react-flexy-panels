@@ -1,4 +1,5 @@
 import { ComponentProps } from "react";
+import { SizeUnit } from "./SizeUnit.t";
 
 export type FlexyPanelProps = ComponentProps<"div"> &
   (
@@ -18,6 +19,6 @@ export type FlexyPanelProps = ComponentProps<"div"> &
         /**
          * @default "%"
          */
-        defaultSizeUnit?: "px" | "%";
+        defaultSizeUnit?: SizeUnit;
       }
   );
