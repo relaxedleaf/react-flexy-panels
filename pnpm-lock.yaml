@@ -14,6 +14,9 @@ importers:
       '@rlx-components/code-preview-tabs':
         specifier: ^0.0.6
         version: 0.0.6(e501046ad37f8901670604d2f304b6ff)
+      '@rlx-components/inline-code':
+        specifier: ^0.0.1
+        version: 0.0.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@rlx-components/shiki-code-block':
         specifier: ^0.0.4
         version: 0.0.4(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(@rlx-widgets/button@0.0.2(@radix-ui/react-slot@1.2.4(@types/react@19.2.6)(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(hast-util-to-jsx-runtime@2.3.6)(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(shiki@3.15.0)
@@ -2115,6 +2118,12 @@ packages:
       '@rlx-widgets/base': '>=0.0.2'
       '@rlx-widgets/select': '>=0.0.2'
       '@rlx-widgets/tabs': '>=0.0.3'
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+
+  '@rlx-components/inline-code@0.0.1':
+    resolution: {integrity: sha512-MxLm0vbthiaA3tLzkavYSPCcdK0/PfmeygGjQzGlVOR90E1h6q11rxufCBnRtJRkPR3PSLnqieL3QYapIO3evQ==}
+    peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
@@ -10862,6 +10871,11 @@ snapshots:
       '@rlx-widgets/base': 0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0)
       '@rlx-widgets/select': 0.0.2(@radix-ui/react-select@2.2.6(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(lucide-react@0.554.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@rlx-widgets/tabs': 0.0.3(@radix-ui/react-tabs@1.1.13(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@rlx-widgets/base@0.0.3(clsx@2.1.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+
+  '@rlx-components/inline-code@0.0.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 

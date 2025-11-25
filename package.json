@@ -90,6 +90,7 @@
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
     "@rlx-components/code-preview-tabs": "^0.0.6",
+    "@rlx-components/inline-code": "^0.0.1",
     "@rlx-components/shiki-code-block": "^0.0.4",
     "@rlx-components/theme-toggle": "^0.0.2",
     "@rlx-hooks/use-is-mobile": "^0.0.1",

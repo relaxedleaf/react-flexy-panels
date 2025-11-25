@@ -8,8 +8,9 @@ import {
   TableHead,
   TableCell,
 } from "@rlx-widgets/table";
-import { CodeBlock, InlineCode } from "../components";
+import { CodeBlock } from "../components";
 import { ShikiCodeBlock } from "@rlx-components/shiki-code-block";
+import { InlineCode } from "@rlx-components/inline-code";
 
 export const ApiReferencePage = () => {
   return (
