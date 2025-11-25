@@ -1,5 +1,11 @@
 # react-flexy-panels
 
+## 1.2.0
+
+### Minor Changes
+
+- 86062b9: feat: add ref support to FlexyPanel to allow programmatilly set panel size
+
 ## 1.1.3
 
 ### Patch Changes
