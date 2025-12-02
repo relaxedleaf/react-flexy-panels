@@ -1,5 +1,11 @@
 # react-flexy-panels
 
+## 1.3.0
+
+### Minor Changes
+
+- b3a2995: support conditional rendering
+
 ## 1.2.0
 
 ### Minor Changes
