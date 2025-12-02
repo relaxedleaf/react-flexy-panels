@@ -13,7 +13,6 @@ import { attachSetSizeFunction } from "../../utils/attachSetSizeFunction";
 
 export const FlexyPanel = forwardRef<FlexyPanelRef, FlexyPanelProps>(
   ({ children, defaultSize, defaultSizeUnit = "%", style, ...props }, ref) => {
-    const { addPanelRef } = useFlexyPanelsContext();
     const size: CSSProperties =
       defaultSize === "auto"
         ? { flex: "auto" }
@@ -27,9 +26,8 @@ export const FlexyPanel = forwardRef<FlexyPanelRef, FlexyPanelProps>(
 
     const setRef = useCallback(
       (node: HTMLDivElement | null) => {
-        // Call addPanelRef to register the element
+        // Attach setSize function to panel element
         if (node) {
-          addPanelRef(node);
           attachSetSizeFunction(node);
         }
         // Forward the ref if provided
@@ -40,7 +38,7 @@ export const FlexyPanel = forwardRef<FlexyPanelRef, FlexyPanelProps>(
           currentRef.current = node as FlexyPanelRef;
         }
       },
-      [addPanelRef]
+      []
     );
 
     return (

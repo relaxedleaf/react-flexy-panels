@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { FlexyPanelsContext } from "../../contexts";
 import { FlexyPanelGroupProps } from "./types";
 
@@ -10,16 +10,7 @@ export const FlexyPanelGroup = ({
   style,
   ...props
 }: FlexyPanelGroupProps) => {
-  const [panelRefs, setPanelRefs] = useState<Array<HTMLDivElement>>([]);
-
-  const addPanelRef = useCallback((ref: HTMLDivElement) => {
-    setPanelRefs((prev) => [...prev, ref]);
-  }, []);
-
-  const value = useMemo(
-    () => ({ direction, panelRefs, addPanelRef }),
-    [direction, panelRefs, addPanelRef]
-  );
+  const value = useMemo(() => ({ direction }), [direction]);
 
   return (
     <div

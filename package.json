@@ -48,7 +48,7 @@
     "@nx/react": "22.1.1",
     "@nx/vite": "22.1.1",
     "@nx/web": "22.1.1",
-    "@rlx-ui/mcp": "^0.0.6",
+    "@rlx-ui/mcp": "^0.0.12",
     "@swc-node/register": "~1.9.1",
     "@swc/cli": "~0.6.0",
     "@swc/core": "~1.5.7",

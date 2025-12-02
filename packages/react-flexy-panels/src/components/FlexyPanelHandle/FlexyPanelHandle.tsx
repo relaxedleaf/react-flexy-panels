@@ -4,66 +4,62 @@ import { useCallback, useId, forwardRef, useRef, useEffect } from "react";
 import { useFlexyPanelsContext, usePanelDrag } from "../../hooks";
 import { FlexyPanelHandleProps } from "./types";
 
-export const FlexyPanelHandle = forwardRef<HTMLDivElement, FlexyPanelHandleProps>(
-  ({ onMouseDown, onTouchStart, ...props }, ref) => {
-    const id = useId();
-    const { direction, panelRefs, addPanelRef } = useFlexyPanelsContext();
-    const { handleMouseDown: handleDragMouseDown, handleTouchStart: handleDragTouchStart } = usePanelDrag({
-      direction,
-      panelRefs,
-      handleId: id,
-    });
+export const FlexyPanelHandle = forwardRef<
+  HTMLDivElement,
+  FlexyPanelHandleProps
+>(({ onMouseDown, onTouchStart, ...props }, ref) => {
+  const id = useId();
+  const { direction } = useFlexyPanelsContext();
+  const {
+    handleMouseDown: handleDragMouseDown,
+    handleTouchStart: handleDragTouchStart,
+  } = usePanelDrag({
+    direction,
+    handleId: id,
+  });
 
-    const handleMouseDown = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
-        handleDragMouseDown(e);
-        onMouseDown?.(e);
-      },
-      [handleDragMouseDown, onMouseDown]
-    );
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      handleDragMouseDown(e);
+      onMouseDown?.(e);
+    },
+    [handleDragMouseDown, onMouseDown]
+  );
 
-    const handleTouchStartEvent = useCallback(
-      (e: React.TouchEvent<HTMLDivElement>) => {
-        handleDragTouchStart(e);
-        onTouchStart?.(e);
-      },
-      [handleDragTouchStart, onTouchStart]
-    );
+  const handleTouchStartEvent = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>) => {
+      handleDragTouchStart(e);
+      onTouchStart?.(e);
+    },
+    [handleDragTouchStart, onTouchStart]
+  );
 
-    // Store the forwarded ref in a ref to avoid dependency issues
-    const forwardedRef = useRef(ref);
-    useEffect(() => {
-      forwardedRef.current = ref;
-    }, [ref]);
+  // Store the forwarded ref in a ref to avoid dependency issues
+  const forwardedRef = useRef(ref);
+  useEffect(() => {
+    forwardedRef.current = ref;
+  }, [ref]);
 
-    const setRef = useCallback(
-      (node: HTMLDivElement | null) => {
-        // Call addPanelRef to register the element
-        if (node) {
-          addPanelRef(node);
-        }
-        // Forward the ref if provided
-        const currentRef = forwardedRef.current;
-        if (typeof currentRef === "function") {
-          currentRef(node);
-        } else if (currentRef) {
-          currentRef.current = node;
-        }
-      },
-      [addPanelRef]
-    );
+  const setRef = useCallback((node: HTMLDivElement | null) => {
+    // Forward the ref if provided
+    const currentRef = forwardedRef.current;
+    if (typeof currentRef === "function") {
+      currentRef(node);
+    } else if (currentRef) {
+      currentRef.current = node;
+    }
+  }, []);
 
-    return (
-      <div
-        id={id}
-        ref={setRef}
-        data-direction={direction}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStartEvent}
-        {...props}
-      />
-    );
-  }
-);
+  return (
+    <div
+      id={id}
+      ref={setRef}
+      data-direction={direction}
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStartEvent}
+      {...props}
+    />
+  );
+});
 
 FlexyPanelHandle.displayName = "FlexyPanelHandle";

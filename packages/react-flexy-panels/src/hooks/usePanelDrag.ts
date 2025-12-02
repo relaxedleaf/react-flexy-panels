@@ -1,36 +1,37 @@
 import { Direction } from "../types";
-import { updatePanelSizes } from "../utils";
+import { findAdjacentPanels, updatePanelSizes } from "../utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type UsePanelDragOptions = {
   direction: Direction;
-  panelRefs: Array<HTMLDivElement>;
   handleId: string;
 };
 
 /**
  * Custom hook to handle panel dragging logic
  */
-export const usePanelDrag = ({
-  direction,
-  panelRefs,
-  handleId,
-}: UsePanelDragOptions) => {
+export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef<number>(0);
+  const handleElementRef = useRef<HTMLElement | null>(null);
 
   const updateDragPosition = useCallback(
     (clientX: number, clientY: number) => {
       const dragCurrent = direction === "horizontal" ? clientX : clientY;
       const dragDelta = dragCurrent - dragStartRef.current;
 
-      const handleIndex = panelRefs.findIndex((ref) => ref.id === handleId);
-      if (handleIndex === -1) {
+      // Find handle element if not cached
+      if (!handleElementRef.current) {
+        handleElementRef.current = document.getElementById(handleId);
+      }
+
+      if (!handleElementRef.current) {
         return;
       }
 
-      const panel1 = panelRefs[handleIndex - 1];
-      const panel2 = panelRefs[handleIndex + 1];
+      // Find adjacent panels using DOM traversal
+      const { panel1, panel2 } = findAdjacentPanels(handleElementRef.current);
+
       if (!panel1 || !panel2) {
         return;
       }
@@ -43,7 +44,7 @@ export const usePanelDrag = ({
       });
       dragStartRef.current = dragCurrent;
     },
-    [direction, handleId, panelRefs]
+    [direction, handleId]
   );
 
   const onDrag = useCallback(
@@ -71,6 +72,8 @@ export const usePanelDrag = ({
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
+      // Cache handle element reference on drag start
+      handleElementRef.current = e.currentTarget;
       setIsDragging(true);
       dragStartRef.current = direction === "horizontal" ? e.clientX : e.clientY;
     },
@@ -80,9 +83,12 @@ export const usePanelDrag = ({
   const handleTouchStart = useCallback(
     (e: React.TouchEvent<HTMLDivElement>) => {
       if (e.touches.length > 0) {
+        // Cache handle element reference on drag start
+        handleElementRef.current = e.currentTarget;
         setIsDragging(true);
         const touch = e.touches[0];
-        dragStartRef.current = direction === "horizontal" ? touch.clientX : touch.clientY;
+        dragStartRef.current =
+          direction === "horizontal" ? touch.clientX : touch.clientY;
       }
     },
     [direction]
@@ -102,7 +108,7 @@ export const usePanelDrag = ({
       const originalUserSelect = document.body.style.userSelect;
       // Disable text selection during drag
       document.body.style.userSelect = "none";
-      
+
       document.addEventListener("mousemove", onDrag);
       document.addEventListener("mouseup", handleMouseUp);
       document.addEventListener("touchmove", onTouchDrag, { passive: false });
@@ -112,7 +118,10 @@ export const usePanelDrag = ({
       return () => {
         // Restore original user-select value
         document.body.style.userSelect = originalUserSelect;
-        
+
+        // Clear handle element reference on drag end
+        handleElementRef.current = null;
+
         document.removeEventListener("mousemove", onDrag);
         document.removeEventListener("mouseup", handleMouseUp);
         document.removeEventListener("touchmove", onTouchDrag);
