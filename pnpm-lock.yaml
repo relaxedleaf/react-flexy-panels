@@ -121,8 +121,8 @@ importers:
         specifier: 22.1.1
         version: 22.1.1(@babel/traverse@7.28.5)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.17))(@swc/types@0.1.25)(typescript@5.9.3))(@swc/core@1.5.29(@swc/helpers@0.5.17))(nx@22.1.1(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.17))(@swc/types@0.1.25)(typescript@5.9.3))(@swc/core@1.5.29(@swc/helpers@0.5.17)))(verdaccio@6.2.1(encoding@0.1.13)(typanion@3.14.0))
       '@rlx-ui/mcp':
-        specifier: ^0.0.6
-        version: 0.0.6
+        specifier: ^0.0.12
+        version: 0.0.12
       '@swc-node/register':
         specifier: ~1.9.1
         version: 1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.17))(@swc/types@0.1.25)(typescript@5.9.3)
@@ -2153,8 +2153,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@rlx-ui/mcp@0.0.6':
-    resolution: {integrity: sha512-VnjH49uMcTWEIy1DDVqE7SP1hlO3bEXecgQprV0ZSaZ8IudRFgsPjBjE8eimp3Vvg87cQtD2eBhdpZY94mHBog==}
+  '@rlx-ui/mcp@0.0.12':
+    resolution: {integrity: sha512-ppIarxt8tlmIS6pX9z10GOIzBgiNCspGrd/XrYB5MFY8Risn20WUBqLGKu54x+wqKBVq+ysMHWvHfqPtquLaAQ==}
     hasBin: true
 
   '@rlx-widgets/base@0.0.3':
@@ -10902,7 +10902,7 @@ snapshots:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@rlx-ui/mcp@0.0.6':
+  '@rlx-ui/mcp@0.0.12':
     dependencies:
       '@modelcontextprotocol/sdk': 1.22.0
       zod: 3.25.76

@@ -6,6 +6,7 @@ import {
   ExamplesPage,
   StylingGuidePage,
   HomePage,
+  SandboxPage,
 } from "./pages";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/api" element={<ApiReferencePage />} />
         <Route path="/examples" element={<ExamplesPage />} />
         <Route path="/styling" element={<StylingGuidePage />} />
+        <Route path="/sandbox" element={<SandboxPage />} />
       </Routes>
     </RootLayout>
   );
