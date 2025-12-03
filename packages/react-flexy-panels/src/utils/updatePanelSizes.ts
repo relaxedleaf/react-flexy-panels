@@ -1,4 +1,5 @@
 import { Direction } from "../types";
+import { getPanelSizeByDirection } from "./getPanelSizeByDirection";
 
 type PanelUnit = "px" | "%" | "auto";
 
@@ -16,21 +17,13 @@ export function updatePanelSizes(props: {
   const panel1Unit = (panel1.dataset.unit || "auto") as PanelUnit;
   const panel2Unit = (panel2.dataset.unit || "auto") as PanelUnit;
 
-  const panel1Size =
-    direction === "horizontal"
-      ? panel1.getBoundingClientRect().width
-      : panel1.getBoundingClientRect().height;
-  const panel2Size =
-    direction === "horizontal"
-      ? panel2.getBoundingClientRect().width
-      : panel2.getBoundingClientRect().height;
+  const panel1Size = getPanelSizeByDirection({ panel: panel1, direction });
+  const panel2Size = getPanelSizeByDirection({ panel: panel2, direction });
 
   // Get the parent container to check bounds
   const container = panel1.parentElement;
   const containerSize = container
-    ? direction === "horizontal"
-      ? container.getBoundingClientRect().width
-      : container.getBoundingClientRect().height
+    ? getPanelSizeByDirection({ panel: container, direction })
     : null;
 
   // Calculate new sizes for the two panels being resized
