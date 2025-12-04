@@ -1,3 +1,5 @@
 export * from "./attachSetSizeFunction";
 export * from "./findAdjacentPanels";
-export * from "./panelSize";
+export * from "./getPanelSizeByDirection";
+export * from "./updatePanelSizes";
+export * from "./isSameSign";

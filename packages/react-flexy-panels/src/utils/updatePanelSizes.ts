@@ -1,4 +1,6 @@
 import { Direction } from "../types";
+import { getPanelSizeByDirection } from "./getPanelSizeByDirection";
+import { isSameSign } from "./isSameSign";
 
 type PanelUnit = "px" | "%" | "auto";
 
@@ -10,32 +12,40 @@ export function updatePanelSizes(props: {
   panel2: HTMLDivElement;
   dragDelta: number;
   direction: Direction;
-}): void {
-  const { panel1, panel2, dragDelta, direction } = props;
+  unappliedDragDelta: number;
+}): number {
+  const { panel1, panel2, direction, unappliedDragDelta } = props;
+  let dragDelta = props.dragDelta;
+
+  if (dragDelta === 0) {
+    return 0;
+  }
+
+  if (unappliedDragDelta !== 0 && dragDelta !== 0) {
+    if (!isSameSign(unappliedDragDelta, dragDelta)) {
+      if (Math.abs(unappliedDragDelta) > Math.abs(dragDelta)) {
+        return 0;
+      } else {
+        dragDelta += unappliedDragDelta;
+      }
+    }
+  }
 
   const panel1Unit = (panel1.dataset.unit || "auto") as PanelUnit;
   const panel2Unit = (panel2.dataset.unit || "auto") as PanelUnit;
 
-  const panel1Size =
-    direction === "horizontal"
-      ? panel1.getBoundingClientRect().width
-      : panel1.getBoundingClientRect().height;
-  const panel2Size =
-    direction === "horizontal"
-      ? panel2.getBoundingClientRect().width
-      : panel2.getBoundingClientRect().height;
+  const panel1Size = getPanelSizeByDirection({ panel: panel1, direction });
+  const panel2Size = getPanelSizeByDirection({ panel: panel2, direction });
 
   // Get the parent container to check bounds
   const container = panel1.parentElement;
   const containerSize = container
-    ? direction === "horizontal"
-      ? container.getBoundingClientRect().width
-      : container.getBoundingClientRect().height
+    ? getPanelSizeByDirection({ panel: container, direction })
     : null;
 
   // Calculate new sizes for the two panels being resized
-  let panel1NewSize = panel1Size + dragDelta;
-  let panel2NewSize = panel2Size - dragDelta;
+  let panel1NewSize = Math.abs(panel1Size + dragDelta);
+  let panel2NewSize = Math.abs(panel2Size - dragDelta);
 
   // Constrain sizes to container bounds
   const minPanelSize = 0;
@@ -55,10 +65,7 @@ export function updatePanelSizes(props: {
 
     // Calculate current sizes of all other panels
     const otherPanelsTotalSize = allPanels.reduce((sum, panel) => {
-      const size =
-        direction === "horizontal"
-          ? panel.getBoundingClientRect().width
-          : panel.getBoundingClientRect().height;
+      const size = getPanelSizeByDirection({ panel, direction });
       return sum + size;
     }, 0);
 
@@ -110,4 +117,9 @@ export function updatePanelSizes(props: {
     panel1.style.flex = `0 1 ${panel1NewSize}px`;
     panel2.style.flex = `0 1 ${panel2NewSize}px`;
   }
+
+  const appliedDragDelta1 =
+    getPanelSizeByDirection({ panel: panel1, direction }) - panel1Size;
+
+  return appliedDragDelta1;
 }

@@ -14,6 +14,7 @@ export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef<number>(0);
   const handleElementRef = useRef<HTMLElement | null>(null);
+  const unappliedDragDeltaRef = useRef<number>(0);
 
   const updateDragPosition = useCallback(
     (clientX: number, clientY: number) => {
@@ -36,12 +37,17 @@ export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
         return;
       }
 
-      updatePanelSizes({
+      const appliedDragDelta = updatePanelSizes({
         panel1,
         panel2,
         dragDelta,
         direction,
+        unappliedDragDelta: unappliedDragDeltaRef.current,
       });
+
+      unappliedDragDeltaRef.current =
+        unappliedDragDeltaRef.current + (dragDelta - appliedDragDelta);
+
       dragStartRef.current = dragCurrent;
     },
     [direction, handleId]
@@ -70,28 +76,35 @@ export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
     [isDragging, updateDragPosition]
   );
 
+  const resetDraggingStates = useCallback(
+    (
+      e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
+    ) => {
+      handleElementRef.current = e.currentTarget;
+      unappliedDragDeltaRef.current = 0;
+      setIsDragging(true);
+    },
+    []
+  );
+
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      // Cache handle element reference on drag start
-      handleElementRef.current = e.currentTarget;
-      setIsDragging(true);
+      resetDraggingStates(e);
       dragStartRef.current = direction === "horizontal" ? e.clientX : e.clientY;
     },
-    [direction]
+    [direction, resetDraggingStates]
   );
 
   const handleTouchStart = useCallback(
     (e: React.TouchEvent<HTMLDivElement>) => {
       if (e.touches.length > 0) {
-        // Cache handle element reference on drag start
-        handleElementRef.current = e.currentTarget;
-        setIsDragging(true);
+        resetDraggingStates(e);
         const touch = e.touches[0];
         dragStartRef.current =
           direction === "horizontal" ? touch.clientX : touch.clientY;
       }
     },
-    [direction]
+    [direction, resetDraggingStates]
   );
 
   useEffect(() => {
