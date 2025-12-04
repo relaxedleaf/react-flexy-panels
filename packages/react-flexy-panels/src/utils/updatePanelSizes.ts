@@ -48,10 +48,7 @@ export function updatePanelSizes(props: {
 
     // Calculate current sizes of all other panels
     const otherPanelsTotalSize = allPanels.reduce((sum, panel) => {
-      const size =
-        direction === "horizontal"
-          ? panel.getBoundingClientRect().width
-          : panel.getBoundingClientRect().height;
+      const size = getPanelSizeByDirection({ panel, direction });
       return sum + size;
     }, 0);
 
