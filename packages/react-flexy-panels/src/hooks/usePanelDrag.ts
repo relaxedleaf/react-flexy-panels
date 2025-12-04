@@ -14,6 +14,8 @@ export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef<number>(0);
   const handleElementRef = useRef<HTMLElement | null>(null);
+  const dragDeltaTotalRef = useRef<number>(0);
+  const unappliedDragDeltaRef = useRef<number>(0);
 
   const updateDragPosition = useCallback(
     (clientX: number, clientY: number) => {
@@ -36,12 +38,25 @@ export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
         return;
       }
 
-      updatePanelSizes({
+      dragDeltaTotalRef.current += dragDelta;
+
+      const appliedDragDelta = updatePanelSizes({
         panel1,
         panel2,
         dragDelta,
         direction,
+        unappliedDragDelta: unappliedDragDeltaRef.current,
       });
+
+      unappliedDragDeltaRef.current =
+        unappliedDragDeltaRef.current + (dragDelta - appliedDragDelta);
+
+      // if (Math.abs(unappliedDragDeltaRef.current) < 1) {
+      //   unappliedDragDeltaRef.current = 0;
+      // }
+
+      console.log({ dragDelta, unappliedDragDeltaTotal: unappliedDragDeltaRef.current });
+
       dragStartRef.current = dragCurrent;
     },
     [direction, handleId]
@@ -74,6 +89,7 @@ export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
     (e: React.MouseEvent<HTMLDivElement>) => {
       // Cache handle element reference on drag start
       handleElementRef.current = e.currentTarget;
+      unappliedDragDeltaRef.current = 0;
       setIsDragging(true);
       dragStartRef.current = direction === "horizontal" ? e.clientX : e.clientY;
     },
@@ -85,6 +101,7 @@ export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
       if (e.touches.length > 0) {
         // Cache handle element reference on drag start
         handleElementRef.current = e.currentTarget;
+        unappliedDragDeltaRef.current = 0;
         setIsDragging(true);
         const touch = e.touches[0];
         dragStartRef.current =

@@ -1,5 +1,6 @@
 import { Direction } from "../types";
 import { getPanelSizeByDirection } from "./getPanelSizeByDirection";
+import { isSameSign } from "./isSameSign";
 
 type PanelUnit = "px" | "%" | "auto";
 
@@ -11,8 +12,24 @@ export function updatePanelSizes(props: {
   panel2: HTMLDivElement;
   dragDelta: number;
   direction: Direction;
-}): void {
-  const { panel1, panel2, dragDelta, direction } = props;
+  unappliedDragDelta: number;
+}): number {
+  const { panel1, panel2, direction, unappliedDragDelta } = props;
+  let dragDelta = props.dragDelta;
+
+  if (dragDelta === 0) {
+    return 0;
+  }
+
+  if (unappliedDragDelta !== 0 && dragDelta !== 0) {
+    if (!isSameSign(unappliedDragDelta, dragDelta)) {
+      if (Math.abs(unappliedDragDelta) > Math.abs(dragDelta)) {
+        return 0 ;
+      } else {
+        dragDelta += unappliedDragDelta;
+      }
+    }
+  }
 
   const panel1Unit = (panel1.dataset.unit || "auto") as PanelUnit;
   const panel2Unit = (panel2.dataset.unit || "auto") as PanelUnit;
@@ -27,8 +44,8 @@ export function updatePanelSizes(props: {
     : null;
 
   // Calculate new sizes for the two panels being resized
-  let panel1NewSize = panel1Size + dragDelta;
-  let panel2NewSize = panel2Size - dragDelta;
+  let panel1NewSize = Math.abs(panel1Size + dragDelta);
+  let panel2NewSize = Math.abs(panel2Size - dragDelta);
 
   // Constrain sizes to container bounds
   const minPanelSize = 0;
@@ -61,6 +78,21 @@ export function updatePanelSizes(props: {
       const panel1And2Total = panel1NewSize + panel2NewSize;
       if (panel1And2Total > 0 && availableSize > 0) {
         const scale = availableSize / panel1And2Total;
+        console.table({
+          panel1Size,
+          panel2Size,
+          otherPanelsTotalSize,
+          totalSize,
+          containerSize,
+          availableSize,
+          dragDelta,
+          scale,
+          panel1NewSizeBeforeScale: panel1NewSize,
+          panel2NewSizeBeforeScale: panel2NewSize,
+          panel1And2Total,
+          panel1NewSizeAfterScale: panel1NewSize * scale,
+          panel2NewSizeAfterScale: panel2NewSize * scale,
+        });
         panel1NewSize = panel1NewSize * scale;
         panel2NewSize = panel2NewSize * scale;
       }
@@ -100,4 +132,22 @@ export function updatePanelSizes(props: {
     panel1.style.flex = `0 1 ${panel1NewSize}px`;
     panel2.style.flex = `0 1 ${panel2NewSize}px`;
   }
+
+  const appliedDragDelta1 =
+    getPanelSizeByDirection({ panel: panel1, direction }) - panel1Size;
+
+  const appliedDragDelta2 =
+    getPanelSizeByDirection({ panel: panel2, direction }) - panel2Size;
+
+  let appliedDragDelta = Math.min(
+    Math.abs(appliedDragDelta1),
+    Math.abs(appliedDragDelta2)
+  );
+
+  if (appliedDragDelta1 !== 0) {
+    appliedDragDelta =
+      appliedDragDelta * (appliedDragDelta1 / Math.abs(appliedDragDelta1));
+  }
+
+  return appliedDragDelta1;
 }
