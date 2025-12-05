@@ -94,10 +94,13 @@ export function updatePanelSizes(props: {
   }
 
   // Call the onPreResize function to allow any custom logic to be applied before the panel sizes are updated
-  onPreResize?.({
+  const onPreResizeResult = onPreResize?.({
     panel1NewSize,
     panel2NewSize,
   });
+  if (onPreResizeResult?.abort) {
+    return 0;
+  }
 
   // Handle different unit combinations
   if (panel1Unit === "auto" && panel2Unit === "auto") {
