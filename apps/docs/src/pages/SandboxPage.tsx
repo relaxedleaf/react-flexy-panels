@@ -5,6 +5,12 @@ import { useState } from "react";
 
 export const SandboxPage = () => {
   const [panel2Open, setPanel2Open] = useState(true);
+  const onPreResize = (sizes: {
+    panel1NewSize: number;
+    panel2NewSize: number;
+  }) => {
+    return { abort: sizes.panel1NewSize > 300 };
+  };
   return (
     <div>
       <div className="h-full w-full border">
@@ -16,7 +22,7 @@ export const SandboxPage = () => {
           </FlexyPanel>
           {panel2Open && (
             <>
-              <FlexyHandle />
+              <FlexyHandle onPreResize={onPreResize} />
               <FlexyPanel defaultSize={33}>
                 <div className="flex items-center justify-center h-100">
                   Panel 2
