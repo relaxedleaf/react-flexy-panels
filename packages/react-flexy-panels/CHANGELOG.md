@@ -1,5 +1,11 @@
 # react-flexy-panels
 
+## 1.4.2
+
+### Patch Changes
+
+- 72f04eb: feat: allow resize abort onPreResize
+
 ## 1.4.1
 
 ### Patch Changes
