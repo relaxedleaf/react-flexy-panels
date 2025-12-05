@@ -1,5 +1,11 @@
 # react-flexy-panels
 
+## 1.4.1
+
+### Patch Changes
+
+- 5d214d3: feat: expose onPreResize prop on handle to allow any preprocess to be done before the panels are resized
+
 ## 1.4.0
 
 ### Minor Changes
