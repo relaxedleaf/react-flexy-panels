@@ -7,11 +7,11 @@ A flexible, resizable panel system for React applications version >= 18 with sup
 ## Features
 
 - 🎨 **Flexible Layouts** - Support for both horizontal and vertical panel arrangements
+- 🎛️ **Customizable** - Support for pixel, percentage, and auto-sizing units
+- 🎭 **Unstyled** - No default styles, giving you full control over appearance
 - 🔄 **Resizable Panels** - Drag handles to resize panels dynamically
 - 📦 **Tree-shakeable** - Optimized for minimal bundle size
-- 🎯 **TypeScript** - Full TypeScript support with type definitions
 - 🪶 **Lightweight** - Minimal dependencies, only React as a peer dependency
-- 🎛️ **Customizable** - Support for pixel, percentage, and auto-sizing units
 
 ## Installation
 

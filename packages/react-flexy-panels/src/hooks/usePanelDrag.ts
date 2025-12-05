@@ -1,16 +1,21 @@
-import { Direction } from "../types";
+import { Direction, OnPreResizeFunction } from "../types";
 import { findAdjacentPanels, updatePanelSizes } from "../utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type UsePanelDragOptions = {
   direction: Direction;
   handleId: string;
+  onPreResize?: OnPreResizeFunction;
 };
 
 /**
  * Custom hook to handle panel dragging logic
  */
-export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
+export const usePanelDrag = ({
+  direction,
+  handleId,
+  onPreResize,
+}: UsePanelDragOptions) => {
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef<number>(0);
   const handleElementRef = useRef<HTMLElement | null>(null);
@@ -43,6 +48,7 @@ export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
         dragDelta,
         direction,
         unappliedDragDelta: unappliedDragDeltaRef.current,
+        onPreResize,
       });
 
       unappliedDragDeltaRef.current =
@@ -50,7 +56,7 @@ export const usePanelDrag = ({ direction, handleId }: UsePanelDragOptions) => {
 
       dragStartRef.current = dragCurrent;
     },
-    [direction, handleId]
+    [direction, handleId, onPreResize]
   );
 
   const onDrag = useCallback(

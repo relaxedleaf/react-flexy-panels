@@ -7,7 +7,7 @@ import { FlexyPanelHandleProps } from "./types";
 export const FlexyPanelHandle = forwardRef<
   HTMLDivElement,
   FlexyPanelHandleProps
->(({ onMouseDown, onTouchStart, ...props }, ref) => {
+>(({ onMouseDown, onTouchStart, onPreResize, ...props }, ref) => {
   const id = useId();
   const { direction } = useFlexyPanelsContext();
   const {
@@ -16,6 +16,7 @@ export const FlexyPanelHandle = forwardRef<
   } = usePanelDrag({
     direction,
     handleId: id,
+    onPreResize,
   });
 
   const handleMouseDown = useCallback(

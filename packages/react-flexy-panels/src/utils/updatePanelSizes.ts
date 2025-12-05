@@ -1,4 +1,4 @@
-import { Direction } from "../types";
+import { Direction, OnPreResizeFunction } from "../types";
 import { getPanelSizeByDirection } from "./getPanelSizeByDirection";
 import { isSameSign } from "./isSameSign";
 
@@ -13,8 +13,9 @@ export function updatePanelSizes(props: {
   dragDelta: number;
   direction: Direction;
   unappliedDragDelta: number;
+  onPreResize?: OnPreResizeFunction;
 }): number {
-  const { panel1, panel2, direction, unappliedDragDelta } = props;
+  const { panel1, panel2, direction, unappliedDragDelta, onPreResize } = props;
   let dragDelta = props.dragDelta;
 
   if (dragDelta === 0) {
@@ -91,6 +92,12 @@ export function updatePanelSizes(props: {
     panel1NewSize = Math.max(minPanelSize, panel1NewSize);
     panel2NewSize = Math.max(minPanelSize, panel2NewSize);
   }
+
+  // Call the onPreResize function to allow any custom logic to be applied before the panel sizes are updated
+  onPreResize?.({
+    panel1NewSize,
+    panel2NewSize,
+  });
 
   // Handle different unit combinations
   if (panel1Unit === "auto" && panel2Unit === "auto") {
